@@ -20,6 +20,7 @@ class SongsController < ApplicationController
     # Song belongs to 1 artist
 <<<<<<< HEAD
     @song.artist = Artist.find_or_create_by(:name => params["Artist Name"])
+    @song.artist = Artist.find_or_create_by(params[:name])
 
     #Song has multiple genres
     @song.genre.id = Genre_ids.all
@@ -58,14 +59,14 @@ class SongsController < ApplicationController
 
 
   patch '/songs/:slug' do
-
+binding.pry
     @song = Song.find_by_slug(params[:slug])
     @song = Song.update(params[:song])
     #@song = song.update(params[:song])
 
     #update song.artist because artist has multiple songs and genres
     @song.artist =
-binding.pry
+
     #update genres because song has multiple genres
     @song.genre_ids =
     # @song.genre =
